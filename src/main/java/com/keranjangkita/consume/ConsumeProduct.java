@@ -70,6 +70,8 @@ public class ConsumeProduct {
 			item.setBrutto(itemMaster.getBrutto());
 			item.setWeight(itemMaster.getWeight());
 			item.setWeightType(itemMaster.getWeightType());
+			item.setName(itemMaster.getName());
+			
 			requestItems.add(item);
 		}
 		
