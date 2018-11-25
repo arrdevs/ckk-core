@@ -3,6 +3,7 @@ package com.keranjangkita.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import com.keranjangkita.model.Customer;
 import com.keranjangkita.model.ItemMaster;
+import com.keranjangkita.model.User;
 
 @Component
 public class InitDb {
@@ -27,9 +29,21 @@ public class InitDb {
 	@Autowired
 	ItemMasterService itemMasterService;
 	
+	@Autowired
+	UserService userService;
+	
 	@PostConstruct
 	public void construct() throws IOException {
 		List<ItemMaster> items = new ArrayList();
+		
+		//default user
+		User user = new User();
+		user.setUsername("skn");
+		user.setPassword("mitra2018");
+		user.setStatus("active");
+		user.setCreatedAt(new Date());
+		userService.saveUser(user);
+		
 		   Resource resource = new ClassPathResource("/static/sample_merchant_short_complate.xlsx");
 		   InputStream dbAsStream = resource.getInputStream();
 		   
