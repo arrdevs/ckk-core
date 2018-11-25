@@ -41,6 +41,7 @@ public class InitDb {
 		user.setUsername("skn");
 		user.setPassword("mitra2018");
 		user.setStatus("active");
+		user.setToken("2c93e8126748d47c016748d492650000");
 		user.setCreatedAt(new Date());
 		userService.saveUser(user);
 		
